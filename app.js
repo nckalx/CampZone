@@ -19,12 +19,8 @@ var commentRoutes       = require("./routes/comments"),
     reviewRoutes        = require("./routes/reviews"),
     indexRoutes         = require("./routes/index");
 
-console.log(process.env.DATABASEURL);
-
-// Connect to local MongoDB  
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true});
-
-// mongoose.connect("mongodb://nckalx:nicckk232@ds147233.mlab.com:47233/campzone", { useNewUrlParser: true});
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/camp_zone_v25";
+mongoose.connect(url, { useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
